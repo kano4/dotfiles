@@ -7,6 +7,7 @@ Bundle 'ruby.vim'
 Bundle 'rails.vim'
 Bundle 'ZenCoding.vim'
 Bundle 'neocomplcache'
+Bundle 'quickrun.vim'
 
 
 
@@ -15,7 +16,8 @@ filetype indent on
 syntax enable
 
 " Setting ZenCoding
-let g:user_zen_settings = {'lang': 'ja', 'indentation': '  '}
+let g:user_zen_settings = {'lang': 'ja', 'indentation': ' '}
+imap <C-e> <C-y>,
 
 " Show line number
 set number
