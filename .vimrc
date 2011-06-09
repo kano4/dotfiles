@@ -8,6 +8,7 @@ Bundle 'rails.vim'
 Bundle 'ZenCoding.vim'
 Bundle 'neocomplcache'
 Bundle 'quickrun.vim'
+Bundle 'endwise.vim'
 
 
 
