@@ -17,8 +17,9 @@ setopt correct
 setopt nolistbeep
 
 # Alias
-alias la="ls -a"
-alias lf="ls -F"
+alias ls="ls --color"
+alias la="ls -a --color"
+alias lf="ls -F --color"
 
 alias r2="rvm use 1.8.7@rails2"
 alias r3="rvm use system"
