@@ -20,6 +20,14 @@ syntax enable
 let g:user_zen_settings = {'lang': 'ja', 'indentation': ' '}
 imap <C-e> <C-y>,
 
+" Setting quickrun
+let g:quickrun_config = {}
+let g:quickrun_config['ruby.rspec'] = {'command': 'rspec'}
+augroup QrunRSpec
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+augroup END
+
 " Show line number
 set number
 highlight LineNr ctermfg=grey guifg=#050505
