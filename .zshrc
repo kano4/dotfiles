@@ -16,6 +16,9 @@ setopt auto_pushd
 setopt correct
 setopt nolistbeep
 
+export PATH=/usr/local/bin:$PATH
+alias sudo="sudo PATH=$PATH"
+
 # Alias
 alias ls="ls --color"
 alias ll="ls -l --color"
@@ -26,7 +29,6 @@ alias r2="rvm use 1.8.7@rails2"
 alias r3="rvm use system"
 alias r31="rvm use 1.9.2@rails3-pre"
 
-PATH=$PATH:/usr/local/src/ns-allinone-2.34/ns-2.34
-PATH=$PATH:/usr/local/src/ns-allinone-2.34/nam-1.14
-PATH=$PATH:/usr/local/src/ns-allinone-2.34/ns-2.34/bin
-PATH=$PATH:/usr/local/src/ns-allinone-2.34/xgraph-12.1
+alias scala='nocorrect scala'
+alias nvm='nocorrect nvm'
+alias sass='nocorrect sass'

@@ -5,11 +5,13 @@ call vundle#rc()
 " My Bundles
 Bundle 'ruby.vim'
 Bundle 'rails.vim'
+Bundle 'project.tar.gz'
 Bundle 'ZenCoding.vim'
 Bundle 'neocomplcache'
-Bundle 'quickrun.vim'
+Bundle 'thinca/vim-quickrun'
 Bundle 'endwise.vim'
-
+Bundle 'surround.vim'
+Bundle 'kchmck/vim-coffee-script'
 
 
 filetype off
@@ -27,6 +29,23 @@ augroup QrunRSpec
   autocmd!
   autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
 augroup END
+
+" Setting neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+function InsertTabWrapper()
+  if pumvisible()
+    return "\<c-n>"
+  endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k\|<\|/'
+    return "\<tab>"
+  elseif exists('&omnifunc') && &omnifunc == ''
+    return "\<c-n>"
+  else
+    return "\<c-x>\<c-o>"
+  endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 " Show line number
 set number
