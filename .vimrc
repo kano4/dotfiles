@@ -17,6 +17,7 @@ Bundle 'kchmck/vim-coffee-script'
 filetype off
 filetype indent on
 syntax enable
+imap <C-j> <esc>
 
 " Setting ZenCoding
 let g:user_zen_settings = {'lang': 'ja', 'indentation': ' '}
@@ -24,6 +25,8 @@ imap <C-e> <C-y>,
 
 " Setting quickrun
 let g:quickrun_config = {}
+let g:quickrun_config.tcl = {'command': 'ns'}
+let g:quickrun_config.matlab = {'command': 'octave', 'exec': '%c -q %s'}
 let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'args': '-fs'}
 augroup QrunRSpec
   autocmd!
