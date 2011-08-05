@@ -11,6 +11,7 @@ Bundle 'neocomplcache'
 Bundle 'thinca/vim-quickrun'
 Bundle 'endwise.vim'
 Bundle 'surround.vim'
+Bundle 'matchit.zip'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'cucumber.zip'
 
