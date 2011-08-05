@@ -12,7 +12,7 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'endwise.vim'
 Bundle 'surround.vim'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'matchit.zip'
+Bundle 'cucumber.zip'
 
 
 filetype off
