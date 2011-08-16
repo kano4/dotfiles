@@ -25,9 +25,26 @@ alias ll="ls -l --color"
 alias la="ls -a --color"
 alias lf="ls -F --color"
 
+alias clc='clear'
+alias v='vim'
+alias e='emacs -nw'
+alias g="git"
+
+alias r186="rvm use 1.8.6"
+alias r187="rvm use 1.8.7"
+alias r191="rvm use 1.9.1"
+alias r192="rvm use 1.9.2"
+alias rj="rvm use jruby"
+alias ree="rvm use ree"
+alias rbmark="rvm use 1.8.6,1.8.7,1.9.1,1.9.2,ruby-head,ree benchmark"
+
 alias r2="rvm use 1.8.7@rails2"
-alias r3="rvm use system"
+alias r30="rvm use 1.9.2@rails3.0"
 alias r31="rvm use 1.9.2@rails3-pre"
+
+alias be="bundle exec"
+alias rspec="rspec -c"
+alias cuke="cucumber"
 
 alias scala='nocorrect scala'
 alias nvm='nocorrect nvm'

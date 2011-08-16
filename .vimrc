@@ -14,6 +14,7 @@ Bundle 'surround.vim'
 Bundle 'matchit.zip'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'cucumber.zip'
+Bundle 'haml.zip'
 
 
 filetype off
