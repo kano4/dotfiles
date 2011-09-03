@@ -8,6 +8,7 @@ Bundle 'rails.vim'
 Bundle 'project.tar.gz'
 Bundle 'ZenCoding.vim'
 Bundle 'neocomplcache'
+Bundle 'unite.vim'
 Bundle 'thinca/vim-quickrun'
 Bundle 'endwise.vim'
 Bundle 'surround.vim'
@@ -15,7 +16,6 @@ Bundle 'matchit.zip'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'cucumber.zip'
 Bundle 'haml.zip'
-
 
 filetype off
 filetype indent on
