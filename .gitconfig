@@ -1,0 +1,18 @@
+[user]
+  name = kano4
+  email = shinji@kano4.com
+[color]
+  ui = auto
+[core]
+  editor = vim
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  di = diff
+  br = branch
+  unstage = reset HEAD --
+  last = log -1 HEAD
+  lo = log
+  ad = add
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
