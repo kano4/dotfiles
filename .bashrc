@@ -31,3 +31,6 @@ alias v='vim'
 alias e='emacs -nw'
 alias g='git'
 
+PATH=$PATH:~/ns-allinone-2.34/ns-2.34
+PATH=$PATH:~/ns-allinone-2.34/nam-1.14
+PATH=$PATH:~/ns-allinone-2.34/ns-2.34/bin

@@ -3,10 +3,6 @@ export LANG=ja_JP.UTF-8
 autoload -U compinit
 compinit
 
-if [ -f ~/.git-completion.sh ]; then
-  source ~/.git-completion.sh
-fi
-
 PROMPT="%/%% "
 PROMPT2="%_%% "
 
@@ -30,6 +26,11 @@ setopt share_history
 setopt auto_pushd
 setopt correct
 setopt nolistbeep
+
+
+PATH=$PATH:~/ns-allinone-2.34/ns-2.34
+PATH=$PATH:~/ns-allinone-2.34/nam-1.14
+PATH=$PATH:~/ns-allinone-3.34/ns-2.34/bin
 
 export PATH=/usr/local/bin:$PATH
 alias sudo="sudo PATH=$PATH"
@@ -65,3 +66,4 @@ alias cuke="cucumber"
 alias scala='nocorrect scala'
 alias nvm='nocorrect nvm'
 alias sass='nocorrect sass'
+alias ant='nocorrect ant'
