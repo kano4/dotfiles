@@ -2,6 +2,9 @@
 (setq auto-save-default nil)
 (setq vc-follow-symlinks t)
 
+(add-to-list 'default-frame-alist '(foreground-color . "white"))
+(add-to-list 'default-frame-alist '(background-color . "black"))
+
 (savehist-mode 1)
 (setq-default save-place t)
 (require 'saveplace)
@@ -46,6 +49,9 @@
 
 (require 'sticky)
 (use-sticky-key ";" sticky-alist:ja)
+
+(set-face-attribute 'default nil
+                    :height 100)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
