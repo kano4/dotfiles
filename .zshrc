@@ -27,10 +27,11 @@ setopt auto_pushd
 setopt correct
 setopt nolistbeep
 
-
 PATH=$PATH:~/ns-allinone-2.34/ns-2.34
 PATH=$PATH:~/ns-allinone-2.34/nam-1.14
 PATH=$PATH:~/ns-allinone-3.34/ns-2.34/bin
+
+PATH=$PATH:/usr/local/src/sbt
 
 export PATH=/usr/local/bin:$PATH
 alias sudo="sudo PATH=$PATH"
