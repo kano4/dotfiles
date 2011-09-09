@@ -36,6 +36,9 @@ PATH=$PATH:/usr/local/src/sbt
 export PATH=/usr/local/bin:$PATH
 alias sudo="sudo PATH=$PATH"
 
+export EDITOR=emacsclient
+export VISUAL=emacsclient
+
 # Alias
 alias ls="ls --color=auto"
 alias ll="ls -l"
