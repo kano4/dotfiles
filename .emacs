@@ -2,8 +2,16 @@
 (setq auto-save-default nil)
 (setq vc-follow-symlinks t)
 
+(add-to-list 'load-path "~/.emacs.d/auto-install/")
+(require 'auto-install)
+(auto-install-update-emacswiki-package-name t)
+(auto-install-compatibility-setup)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
 (add-to-list 'default-frame-alist '(foreground-color . "white"))
 (add-to-list 'default-frame-alist '(background-color . "black"))
+
+(require 'auto-async-byte-compile)
 
 (savehist-mode 1)
 (setq-default save-place t)
@@ -30,12 +38,6 @@
 (scroll-bar-mode -1)
 
 (add-to-list 'Info-default-directory-list "~/.info")
-
-(add-to-list 'load-path "~/.emacs.d/auto-install/")
-(require 'auto-install)
-(auto-install-update-emacswiki-package-name t)
-(auto-install-compatibility-setup)
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
@@ -65,3 +67,13 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+(require 'redo+)
+(global-set-key (kbd "C-M-/") 'redo)
+(setq undo-no-redo t)
+(setq undo-limit 600000)
+(setq undo-strong-limit 900000)
+
+(require 'skk-autoloads)
+(setq default-input-method "japanese-skk")
+(global-set-key "\C-x\C-j" 'skk-mode)

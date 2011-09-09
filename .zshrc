@@ -36,6 +36,9 @@ PATH=$PATH:/usr/local/src/sbt
 export PATH=/usr/local/bin:$PATH
 alias sudo="sudo PATH=$PATH"
 
+export EDITOR=emacsclient
+export VISUAL=emacsclient
+
 # Alias
 alias ls="ls --color"
 alias ll="ls -l --color"
@@ -45,7 +48,7 @@ alias lf="ls -F --color"
 alias c='clear'
 alias f='fg'
 alias v='vim'
-alias e='emacs -nw'
+alias e='emacs'
 alias g='git'
 
 alias r186="rvm use 1.8.6"
