@@ -1,49 +1,67 @@
-(set-language-environment 'Japanese)
-(prefer-coding-system 'utf-8)
-
-(custom-set-variables '(column-number-mode t) '(line-number-mode t))
-(setq frame-title-format (format "%%f" (system-name)))
 (setq make-backup-files nil)
 (setq auto-save-default nil)
-(global-set-key "\C-m" 'newline-and-indent)
-(setq read-file-name-completion-ignore-case t)
-(global-font-lock-mode t)
-(auto-compression-mode t)
-(setq inhibit-startup-message t)
+(setq vc-follow-symlinks t)
+
+(add-to-list 'default-frame-alist '(foreground-color . "white"))
+(add-to-list 'default-frame-alist '(background-color . "black"))
+
+(savehist-mode 1)
+(setq-default save-place t)
+(require 'saveplace)
 (show-paren-mode 1)
-(setq-default tab-width 2 indent-tabs-mode nil)
-(setq visible-bell t)
-(setq warning-suppress-types nil)
+(global-set-key (kbd "C-h") 'delete-backward-char)
+(display-time)
+(line-number-mode 1)
+(column-number-mode 1)
+(transient-mark-mode 1)
+(setq gc-cons-threshold (* 10 gc-cons-threshold))
+(setq message-log-max 10000)
+(setq enable-recursive-minibuffers t)
+(setq use-dialog-box nil)
+(defalias 'message-box 'message)
+(setq history-lenght 1000)
+(setq echo-keystrokes 0.1)
+(setq large-file-warning-threshold (* 25 1024 1024))
+(defadvice abort-recursive-edit (before minibuffer-save activate)
+  (when (eq (selected-window) (active-minibuffer-window))
+    (add-to-history minibuffer-history-variable (minibuffer-contents))))
+(defalias 'yes-or-no-p 'y-or-n-p)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
-;; ruby-mode
-(add-to-list 'load-path "~/.emacs.d/ruby-mode")
-(autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files" t)
-(setq auto-mode-alist (cons '("\\.rb$" . ruby-mode) auto-mode-alist))
-(setq interpreter-mode-alist (append '(("ruby" . ruby-mode)) interpreter-mode-alist))
-(autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process")
-(autoload 'inf-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
-(add-hook 'ruby-mode-hook '(lambda () (inf-ruby-keys)))
+(add-to-list 'Info-default-directory-list "~/.info")
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/auto-install"))
+(add-to-list 'load-path "~/.emacs.d/auto-install/")
 (require 'auto-install)
-(setq auto-install-directory "~/.emacs.d/auto-install/")
+(auto-install-update-emacswiki-package-name t)
 (auto-install-compatibility-setup)
-(require 'anything)
-(require 'anything-config)
-(add-to-list 'anything-sources 'anything-c-source-emacs-commands)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
+
+(require 'sticky)
+(use-sticky-key ";" sticky-alist:ja)
+
+(set-face-attribute 'default nil
+                    :height 100)
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
-
-(require 'jaspace)
-(setq jaspace-alternate-jaspace-string "□")
-(setq jaspace-highlight-tabs t)
-(setq jaspace-highlight-tabs ?^ )
-
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
-(setq ruby-indent-level 2)
-(setq ruby-indent-tabs-mode nil)
