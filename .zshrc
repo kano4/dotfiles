@@ -36,15 +36,15 @@ export PATH=/usr/local/bin:$PATH
 alias sudo="sudo PATH=$PATH"
 
 # Alias
-alias ls="ls --color"
-alias ll="ls -l --color"
-alias la="ls -a --color"
-alias lf="ls -F --color"
+alias ls="ls --color=auto"
+alias ll="ls -l"
+alias la="ls -a"
+alias lf="ls -F"
 
 alias c='clear'
 alias f='fg'
 alias v='vim'
-alias e='emacs -nw'
+alias e='emacs'
 alias g='git'
 
 alias r186="rvm use 1.8.6"
