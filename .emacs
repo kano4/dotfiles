@@ -8,9 +8,6 @@
 (auto-install-compatibility-setup)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-(add-to-list 'default-frame-alist '(foreground-color . "white"))
-(add-to-list 'default-frame-alist '(background-color . "black"))
-
 (require 'auto-async-byte-compile)
 
 (savehist-mode 1)
@@ -31,8 +28,8 @@
 (setq echo-keystrokes 0.1)
 (setq large-file-warning-threshold (* 25 1024 1024))
 (defadvice abort-recursive-edit (before minibuffer-save activate)
-  (when (eq (selected-window) (active-minibuffer-window))
-    (add-to-history minibuffer-history-variable (minibuffer-contents))))
+           (when (eq (selected-window) (active-minibuffer-window))
+             (add-to-history minibuffer-history-variable (minibuffer-contents))))
 (defalias 'yes-or-no-p 'y-or-n-p)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -45,8 +42,8 @@
 ;;; Move this code earlier if you want to reference
 ;;; packages in your .emacs.
 (when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (load
+    (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
 (require 'sticky)
@@ -60,13 +57,13 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t))
+  '(inhibit-startup-screen t))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- )
+  )
 
 (require 'redo+)
 (global-set-key (kbd "C-M-/") 'redo)
@@ -77,3 +74,6 @@
 (require 'skk-autoloads)
 (setq default-input-method "japanese-skk")
 (global-set-key "\C-x\C-j" 'skk-mode)
+
+(require 'auto-complete-config)
+(global-auto-complete-mode 1)
