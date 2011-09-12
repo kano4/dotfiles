@@ -48,7 +48,7 @@ alias lf="ls -F"
 alias c='clear'
 alias f='fg'
 alias v='vim'
-alias e='emacs'
+alias e='emacsclient'
 alias g='git'
 
 alias r186="rvm use 1.8.6"

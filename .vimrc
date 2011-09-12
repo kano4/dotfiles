@@ -4,7 +4,6 @@ call vundle#rc()
 
 " My Bundles
 Bundle 'ruby.vim'
-Bundle 'rails.vim'
 Bundle 'project.tar.gz'
 Bundle 'ZenCoding.vim'
 Bundle 'neocomplcache'
