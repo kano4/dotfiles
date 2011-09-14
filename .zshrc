@@ -29,6 +29,7 @@ setopt nolistbeep
 
 PATH=$PATH:/usr/local/src/ns-allinone-2.34/ns-2.34
 PATH=$PATH:/usr/local/src/ns-allinone-2.34/nam-1.14
+PATH=$PATH:/usr/local/src/ns-allinone-2.34/otcl-1.13
 PATH=$PATH:/usr/local/src/ns-allinone-3.34/ns-2.34/bin
 
 PATH=$PATH:/usr/local/src/sbt
@@ -40,11 +41,10 @@ export EDITOR=emacsclient
 export VISUAL=emacsclient
 
 # Alias
-alias ls="ls --color"
-alias ll="ls -l --color"
-alias la="ls -a --color"
-alias lf="ls -F --color"
-alias emacs='emacs'
+alias ls="ls --color=auto"
+alias ll="ls -l"
+alias la="ls -a"
+alias lf="ls -F"
 
 alias c='clear'
 alias f='fg'
