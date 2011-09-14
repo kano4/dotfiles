@@ -41,11 +41,10 @@ export EDITOR=emacsclient
 export VISUAL=emacsclient
 
 # Alias
-alias ls="ls --color"
-alias ll="ls -l --color"
-alias la="ls -a --color"
-alias lf="ls -F --color"
-alias emacs='emacs'
+alias ls="ls --color=auto"
+alias ll="ls -l"
+alias la="ls -a"
+alias lf="ls -F"
 
 alias c='clear'
 alias f='fg'
