@@ -74,6 +74,7 @@
 (require 'skk-autoloads)
 (setq default-input-method "japanese-skk")
 (global-set-key "\C-x\C-j" 'skk-mode)
+(setq skk-large-jisyo "/usr/share/skk/SKK-JISYO.L")
 
 (require 'auto-complete-config)
 (global-auto-complete-mode 1)
