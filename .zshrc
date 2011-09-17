@@ -34,13 +34,12 @@ PATH=$PATH:/usr/local/src/ns-allinone-3.34/ns-2.34/bin
 
 PATH=$PATH:/usr/local/src/sbt
 
- [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+export PATH=./bin:$PATH 
 
 export PATH=/usr/local/bin:$PATH
 alias sudo="sudo PATH=$PATH"
 
-export EDITOR=emacsclient
-export VISUAL=emacsclient
 
 # Alias
 alias ls="ls --color=auto"
