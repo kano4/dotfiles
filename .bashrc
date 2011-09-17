@@ -34,3 +34,4 @@ alias g='git'
 PATH=$PATH:~/ns-allinone-2.34/ns-2.34
 PATH=$PATH:~/ns-allinone-2.34/nam-1.14
 PATH=$PATH:~/ns-allinone-2.34/ns-2.34/bin
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
