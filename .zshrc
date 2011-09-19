@@ -38,8 +38,6 @@ export PATH=/usr/local/bin:$PATH
 alias sudo="sudo PATH=$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-export PATH=./bin:$PATH
-
 
 # Alias
 alias ls="ls --color=auto"
@@ -59,7 +57,7 @@ alias r191="rvm use 1.9.1"
 alias r192="rvm use 1.9.2"
 alias rj="rvm use jruby"
 alias ree="rvm use ree"
-alias rbmark="rvm use 1.8.6,1.8.7,1.9.1,1.9.2,ruby-head,ree benchmark"
+alias rbmark="rvm use 1.8.7,1.9.2 benchmark"
 
 alias r2="rvm use 1.8.7@rails2"
 alias r30="rvm use 1.9.2@rails3.0"
