@@ -19,12 +19,19 @@ Bundle 'arpeggio'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
-
+Bundle 'tyru/eskk.vim'
+Bundle 'smartchr'
 
 filetype off
 filetype indent on
 syntax enable
-imap <C-j> <esc>
+
+inoremap jj <esc>
+
+" smartchr
+inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
+inoremap <expr> , smartchr#loop(', ', ',')
+cnoremap <expr> / smartchr#loop('/', '~/', '//', {'ctype': ':'})
 
 " Setting neocomplcache
 let g:neocomplcache_enable_at_startup = 1
