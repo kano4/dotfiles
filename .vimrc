@@ -43,6 +43,16 @@ function InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
+" submode.vim
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>+')
+call submode#map('winsize', 'n', '', '-', '<C-w>-')
+
 
 " Setting ZenCoding
 let g:user_zen_settings = {'lang': 'ja', 'indentation': ' '}
