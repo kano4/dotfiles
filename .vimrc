@@ -19,7 +19,6 @@ Bundle 'arpeggio'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
-Bundle 'tyru/eskk.vim'
 Bundle 'smartchr'
 
 filetype off
