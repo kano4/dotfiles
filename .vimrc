@@ -15,12 +15,16 @@ Bundle 'cucumber.zip'
 Bundle 'haml.zip'
 Bundle 'submode'
 Bundle 'arpeggio'
-"Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
+Bundle 'Shougo/vimfiler'
 Bundle 'tyru/eskk.vim'
 Bundle 'smartchr'
+Bundle 'taku-o/vim-toggle'
+
+Bundle 'mattn/calendar-vim'
 
 filetype off
 filetype indent on
@@ -32,6 +36,9 @@ inoremap jj <esc>
 inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
 inoremap <expr> , smartchr#loop(', ', ',')
 cnoremap <expr> / smartchr#loop('/', '~/', '//', {'ctype': ':'})
+
+" toggle.vim
+let g:toggle_pairs = {'and':'or', 'or':'and', 'if':'elsif', 'elsif':'else', 'else':'if', 'enable':'disable', 'disable':'enable'}
 
 " Setting neocomplcache
 let g:neocomplcache_enable_at_startup = 1
@@ -80,14 +87,9 @@ set lcs=tab:>.,trail:_,extends:\
 
 " Show multi-byte space
 highlight WideSpace ctermbg=blue guibg=blue
-
 function! s:HighlightSpaces()
   match WideSpace /　/
 endf
 call s:HighlightSpaces()
 
 nnoremap gc `[v`]
-
-"inoremap <C-e> <Esc>
-"vnoremap <C-e> <Esc>
-"cnoremap <C-e> <Esc>
