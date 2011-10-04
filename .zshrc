@@ -50,6 +50,7 @@ alias f='fg'
 alias v='vim'
 alias e='emacsclient'
 alias g='git'
+alias s='screen'
 
 alias r186="rvm use 1.8.6"
 alias r187="rvm use 1.8.7"
