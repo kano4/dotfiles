@@ -109,3 +109,8 @@ endf
 call s:HighlightSpaces()
 
 nnoremap gc `[v`]
+
+let g:eskk#dictionary = '~/.ssk-jisyo'
+let g:eskk#large_dictionary = "~/SKK-JISYO.L"
+
+
