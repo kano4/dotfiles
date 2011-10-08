@@ -109,38 +109,40 @@ augroup QrunRSpec
   autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
 augroup END
 
-" make outputter for coloring output message.
 let rspec_outputter = quickrun#outputter#buffer#new()
 function! rspec_outputter.init(session)
-  " call original process
   call call(quickrun#outputter#buffer#new().init,  [a:session],  self)
 endfunction
 
 function! rspec_outputter.finish(session)
-  " set color
-  highlight default RSpecOK         ctermbg = Green ctermfg = White
-  highlight default RSpecFail       ctermbg = Red   ctermfg = White
-  highlight default RSpecAssertFail ctermfg = Red
-  highlight default RSpecComment    ctermfg = Darkcyan
-  call matchadd("RSpecFail", "^FAILURES*$")
-  call matchadd("RSpecOK", "^OK.*$")
-  call matchadd("RSpecAssertFail", " expected.*$")
-  call matchadd("RSpecAssertFail", " got.*$")
-  call matchadd("RSpecAssertFail", "^Failures.*$")
-  call matchadd("RSpecComment", "# .*$")
+  highlight default RSpecSuccess ctermfg = Green cterm = none
+  highlight default RSpecFail    ctermfg = Red   cterm = none
+  highlight default RSpecComment ctermfg = Cyan  cterm = none
+  highlight default RSpecNormal  ctermfg = White cterm = none
+  call matchadd("RSpecSuccess", "^[\.F]*\.[\.F]*$")
+  call matchadd("RSpecSuccess", "^.*, 0 failures$")
+  call matchadd("RSpecFail", "F")
+  call matchadd("RSpecFail", "^.*, [1-9]* failures.*$")
+  call matchadd("RSpecFail", "^.*, 1 failure.*$")
+  call matchadd("RSpecFail", "^ *expected.*$")
+  call matchadd("RSpecFail", "^ *got.*$")
+  call matchadd("RSpecFail", "^ *Failure/Error:.*$")
+  call matchadd("RSpecFail", "^.*(FAILED - [0-9]*)$")
+  call matchadd("RSpecFail", "^rspec .*:.*$")
+  call matchadd("RSpecComment", " # .*$")
+  call matchadd("RSpecNormal", "^Failures:")
+  call matchadd("RSpecNormal", "^Finished")
+  call matchadd("RSpecNormal", "^Failed")
 
-  call call(quickrun#outputter#buffer#new().finish,  [a:session],  self)
+  call call(quickrun#outputter#buffer#new().finish,  [a:session], self)
 endfunction
 
-" regist outputter to quickrun
-call quickrun#register_outputter("rspec_outputter",  rspec_outputter)
-
+call quickrun#register_outputter("rspec_outputter", rspec_outputter)
 let g:quickrun_config['ruby.rspec'] = {
-      \ 'command': 'rspec', 'args': '-fs',
+      \ 'command': 'rspec',
       \ 'outputter': 'rspec_outputter',
       \ }
 
 " eskk.vim
 let g:eskk#dictionary = '~/.ssk-jisyo'
-let g:eskk#large_dictionary = '~/SKK-JISYO.L'
-
+let g:eskk#large_dictionary = '~/.skk-jisyo/SKK-JISYO.L'
