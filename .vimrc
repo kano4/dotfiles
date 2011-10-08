@@ -150,5 +150,5 @@ let g:quickrun_config['ruby.rspec'] = {
       \ }
 
 " eskk.vim
-let g:eskk#dictionary = '~/.ssk-jisyo'
-let g:eskk#large_dictionary = '~/.skk-jisyo/SKK-JISYO.L'
+let g:eskk#dictionary = '~/.skk-jisyo'
+let g:eskk#large_dictionary = '~/.SKK-JISYO.L'
