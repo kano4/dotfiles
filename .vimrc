@@ -38,6 +38,28 @@ autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview
 " Don't save options.
 set viewoptions-=options
 
+" Show line number
+set number
+highlight LineNr ctermfg=grey guifg=#050505
+
+" Tab
+set expandtab
+set smartindent
+set ts=2 sw=2 sts=2
+
+" Show Tab and end-of-line space
+set list
+set lcs=tab:>.,trail:_,extends:\
+
+" Show multi-byte space
+highlight WideSpace ctermbg=blue guibg=blue
+function! s:HighlightSpaces()
+  match WideSpace /　/
+endf
+call s:HighlightSpaces()
+
+nnoremap gc `[v`]
+
 " smartchr
 inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
 inoremap <expr> , smartchr#loop(', ', ',')
@@ -74,43 +96,51 @@ call submode#map('winsize', 'n', '', '+', '<C-w>+')
 call submode#map('winsize', 'n', '', '-', '<C-w>-')
 
 
-" Setting ZenCoding
+" ZenCoding
 let g:user_zen_settings = {'lang': 'ja', 'indentation': ' '}
 imap <C-e> <C-y>,
 
-" Setting quickrun
+" quickrun
 let g:quickrun_config = {}
 let g:quickrun_config.tcl = {'command': 'ns'}
 let g:quickrun_config.matlab = {'command': 'octave', 'exec': '%c -q %s'}
-let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'args': '-fs'}
 augroup QrunRSpec
   autocmd!
   autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
 augroup END
 
-" Show line number
-set number
-highlight LineNr ctermfg=grey guifg=#050505
+" make outputter for coloring output message.
+let rspec_outputter = quickrun#outputter#buffer#new()
+function! rspec_outputter.init(session)
+  " call original process
+  call call(quickrun#outputter#buffer#new().init,  [a:session],  self)
+endfunction
 
-" Tab
-set expandtab
-set smartindent
-set ts=2 sw=2 sts=2
+function! rspec_outputter.finish(session)
+  " set color
+  highlight default RSpecOK         ctermbg = Green ctermfg = White
+  highlight default RSpecFail       ctermbg = Red   ctermfg = White
+  highlight default RSpecAssertFail ctermfg = Red
+  highlight default RSpecComment    ctermfg = Darkcyan
+  call matchadd("RSpecFail", "^FAILURES*$")
+  call matchadd("RSpecOK", "^OK.*$")
+  call matchadd("RSpecAssertFail", " expected.*$")
+  call matchadd("RSpecAssertFail", " got.*$")
+  call matchadd("RSpecAssertFail", "^Failures.*$")
+  call matchadd("RSpecComment", "# .*$")
 
-" Show Tab and end-of-line space
-set list
-set lcs=tab:>.,trail:_,extends:\
+  call call(quickrun#outputter#buffer#new().finish,  [a:session],  self)
+endfunction
 
-" Show multi-byte space
-highlight WideSpace ctermbg=blue guibg=blue
-function! s:HighlightSpaces()
-  match WideSpace /　/
-endf
-call s:HighlightSpaces()
+" regist outputter to quickrun
+call quickrun#register_outputter("rspec_outputter",  rspec_outputter)
 
-nnoremap gc `[v`]
+let g:quickrun_config['ruby.rspec'] = {
+      \ 'command': 'rspec', 'args': '-fs',
+      \ 'outputter': 'rspec_outputter',
+      \ }
 
+" eskk.vim
 let g:eskk#dictionary = '~/.ssk-jisyo'
-let g:eskk#large_dictionary = "~/SKK-JISYO.L"
-
+let g:eskk#large_dictionary = '~/SKK-JISYO.L'
 
