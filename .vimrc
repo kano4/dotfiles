@@ -3,6 +3,7 @@ set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
 " My Bundles
+Bundle 'gmarik/vundle'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'project.tar.gz'
@@ -25,6 +26,7 @@ Bundle 'tyru/eskk.vim'
 Bundle 'smartchr'
 Bundle 'taku-o/vim-toggle'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'sudo.vim'
 
 Bundle 'mattn/calendar-vim'
 
