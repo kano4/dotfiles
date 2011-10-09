@@ -3,13 +3,14 @@ set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
 " My Bundles
-Bundle 'ruby.vim'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
 Bundle 'project.tar.gz'
 Bundle 'ZenCoding.vim'
 Bundle 'thinca/vim-quickrun'
 Bundle 'endwise.vim'
 Bundle 'surround.vim'
-Bundle 'matchit.zip'
+Bundle 'vim-scripts/matchit.zip'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'cucumber.zip'
 Bundle 'haml.zip'
@@ -23,6 +24,7 @@ Bundle 'Shougo/vimfiler'
 Bundle 'tyru/eskk.vim'
 Bundle 'smartchr'
 Bundle 'taku-o/vim-toggle'
+Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'mattn/calendar-vim'
 
@@ -31,6 +33,7 @@ filetype indent on
 syntax enable
 
 inoremap jj <esc>
+nnoremap gc `[v`]
 
 " Save fold settings.
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
@@ -58,8 +61,6 @@ function! s:HighlightSpaces()
 endf
 call s:HighlightSpaces()
 
-nnoremap gc `[v`]
-
 " smartchr
 inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
 inoremap <expr> , smartchr#loop(', ', ',')
@@ -68,7 +69,7 @@ cnoremap <expr> / smartchr#loop('/', '~/', '//', {'ctype': ':'})
 " toggle.vim
 let g:toggle_pairs = {'and':'or', 'or':'and', 'if':'elsif', 'elsif':'else', 'else':'if', 'enable':'disable', 'disable':'enable'}
 
-" Setting neocomplcache
+" neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 function InsertTabWrapper()
   if pumvisible()
@@ -115,20 +116,21 @@ function! rspec_outputter.init(session)
 endfunction
 
 function! rspec_outputter.finish(session)
-  highlight default RSpecSuccess ctermfg = Green cterm = none
-  highlight default RSpecFail    ctermfg = Red   cterm = none
+  highlight default RSpecGreen ctermfg = Green cterm = none
+  highlight default RSpecRed    ctermfg = Red   cterm = none
   highlight default RSpecComment ctermfg = Cyan  cterm = none
   highlight default RSpecNormal  ctermfg = White cterm = none
-  call matchadd("RSpecSuccess", "^[\.F]*\.[\.F]*$")
-  call matchadd("RSpecSuccess", "^.*, 0 failures$")
-  call matchadd("RSpecFail", "F")
-  call matchadd("RSpecFail", "^.*, [1-9]* failures.*$")
-  call matchadd("RSpecFail", "^.*, 1 failure.*$")
-  call matchadd("RSpecFail", "^ *expected.*$")
-  call matchadd("RSpecFail", "^ *got.*$")
-  call matchadd("RSpecFail", "^ *Failure/Error:.*$")
-  call matchadd("RSpecFail", "^.*(FAILED - [0-9]*)$")
-  call matchadd("RSpecFail", "^rspec .*:.*$")
+  call matchadd("RSpecGreen", "^[\.F]*\.[\.F]*$")
+  call matchadd("RSpecGreen", "^.*, 0 failures$")
+  call matchadd("RSpecRed", "F")
+  call matchadd("RSpecRed", "^.*, [1-9]* failures.*$")
+  call matchadd("RSpecRed", "^.*, 1 failure.*$")
+  call matchadd("RSpecRed", "^ *(.*$")
+  call matchadd("RSpecRed", "^ *expected.*$")
+  call matchadd("RSpecRed", "^ *got.*$")
+  call matchadd("RSpecRed", "^ *Failure/Error:.*$")
+  call matchadd("RSpecRed", "^.*(FAILED - [0-9]*)$")
+  call matchadd("RSpecRed", "^rspec .*:.*$")
   call matchadd("RSpecComment", " # .*$")
   call matchadd("RSpecNormal", "^Failures:")
   call matchadd("RSpecNormal", "^Finished")
