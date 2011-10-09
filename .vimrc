@@ -99,7 +99,6 @@ call submode#map('winsize', 'n', '', '<', '<C-w><')
 call submode#map('winsize', 'n', '', '+', '<C-w>+')
 call submode#map('winsize', 'n', '', '-', '<C-w>-')
 
-
 " ZenCoding
 let g:user_zen_settings = {'lang': 'ja', 'indentation': ' '}
 imap <C-e> <C-y>,
