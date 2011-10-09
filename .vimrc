@@ -27,6 +27,7 @@ Bundle 'smartchr'
 Bundle 'taku-o/vim-toggle'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'sudo.vim'
+Bundle 'mattn/gist-vim'
 
 Bundle 'mattn/calendar-vim'
 
