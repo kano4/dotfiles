@@ -144,6 +144,7 @@ endfunction
 call quickrun#register_outputter("rspec_outputter", rspec_outputter)
 let g:quickrun_config['ruby.rspec'] = {
       \ 'command': 'rspec',
+      \ 'cmdopt' : '-fs',
       \ 'outputter': 'rspec_outputter',
       \ }
 
