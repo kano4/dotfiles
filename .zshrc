@@ -52,6 +52,11 @@ alias e='emacsclient'
 alias g='git'
 alias s='screen'
 
+alias nkf-chk='nkf -g'
+alias nkf-utf8='nkf -w --overwrite'
+alias nkf-sjis='nkf -s --overwrite'
+alias nkf-eucjp='nkf -e --overwrite'
+
 alias r186="rvm use 1.8.6"
 alias r187="rvm use 1.8.7"
 alias r191="rvm use 1.9.1"

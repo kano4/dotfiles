@@ -3,13 +3,16 @@ set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
 " My Bundles
-Bundle 'ruby.vim'
+Bundle 'gmarik/vundle'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
 Bundle 'project.tar.gz'
 Bundle 'ZenCoding.vim'
 Bundle 'thinca/vim-quickrun'
+Bundle 'thinca/vim-ref'
 Bundle 'endwise.vim'
 Bundle 'surround.vim'
-Bundle 'matchit.zip'
+Bundle 'vim-scripts/matchit.zip'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'cucumber.zip'
 Bundle 'haml.zip'
@@ -23,6 +26,9 @@ Bundle 'Shougo/vimfiler'
 Bundle 'tyru/eskk.vim'
 Bundle 'smartchr'
 Bundle 'taku-o/vim-toggle'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'sudo.vim'
+Bundle 'mattn/gist-vim'
 
 Bundle 'mattn/calendar-vim'
 
@@ -31,12 +37,33 @@ filetype indent on
 syntax enable
 
 inoremap jj <esc>
+nnoremap gc `[v`]
 
 " Save fold settings.
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
 autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
 " Don't save options.
 set viewoptions-=options
+
+" Show line number
+set number
+highlight LineNr ctermfg=grey guifg=#050505
+
+" Tab
+set expandtab
+set smartindent
+set ts=2 sw=2 sts=2
+
+" Show Tab and end-of-line space
+set list
+set lcs=tab:>.,trail:_,extends:\
+
+" Show multi-byte space
+highlight WideSpace ctermbg=blue guibg=blue
+function! s:HighlightSpaces()
+  match WideSpace /　/
+endf
+call s:HighlightSpaces()
 
 " smartchr
 inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
@@ -46,7 +73,7 @@ cnoremap <expr> / smartchr#loop('/', '~/', '//', {'ctype': ':'})
 " toggle.vim
 let g:toggle_pairs = {'and':'or', 'or':'and', 'if':'elsif', 'elsif':'else', 'else':'if', 'enable':'disable', 'disable':'enable'}
 
-" Setting neocomplcache
+" neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 function InsertTabWrapper()
   if pumvisible()
@@ -73,39 +100,55 @@ call submode#map('winsize', 'n', '', '<', '<C-w><')
 call submode#map('winsize', 'n', '', '+', '<C-w>+')
 call submode#map('winsize', 'n', '', '-', '<C-w>-')
 
-
-" Setting ZenCoding
+" ZenCoding
 let g:user_zen_settings = {'lang': 'ja', 'indentation': ' '}
 imap <C-e> <C-y>,
 
-" Setting quickrun
+" quickrun
 let g:quickrun_config = {}
 let g:quickrun_config.tcl = {'command': 'ns'}
 let g:quickrun_config.matlab = {'command': 'octave', 'exec': '%c -q %s'}
-let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'args': '-fs'}
 augroup QrunRSpec
   autocmd!
   autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
 augroup END
 
-" Show line number
-set number
-highlight LineNr ctermfg=grey guifg=#050505
+let rspec_outputter = quickrun#outputter#buffer#new()
+function! rspec_outputter.init(session)
+  call call(quickrun#outputter#buffer#new().init,  [a:session],  self)
+endfunction
 
-" Tab
-set expandtab
-set smartindent
-set ts=2 sw=2 sts=2
+function! rspec_outputter.finish(session)
+  highlight default RSpecGreen ctermfg = Green cterm = none
+  highlight default RSpecRed    ctermfg = Red   cterm = none
+  highlight default RSpecComment ctermfg = Cyan  cterm = none
+  highlight default RSpecNormal  ctermfg = White cterm = none
+  call matchadd("RSpecGreen", "^[\.F]*\.[\.F]*$")
+  call matchadd("RSpecGreen", "^.*, 0 failures$")
+  call matchadd("RSpecRed", "F")
+  call matchadd("RSpecRed", "^.*, [1-9]* failures.*$")
+  call matchadd("RSpecRed", "^.*, 1 failure.*$")
+  call matchadd("RSpecRed", "^ *(.*$")
+  call matchadd("RSpecRed", "^ *expected.*$")
+  call matchadd("RSpecRed", "^ *got.*$")
+  call matchadd("RSpecRed", "^ *Failure/Error:.*$")
+  call matchadd("RSpecRed", "^.*(FAILED - [0-9]*)$")
+  call matchadd("RSpecRed", "^rspec .*:.*$")
+  call matchadd("RSpecComment", " # .*$")
+  call matchadd("RSpecNormal", "^Failures:")
+  call matchadd("RSpecNormal", "^Finished")
+  call matchadd("RSpecNormal", "^Failed")
 
-" Show Tab and end-of-line space
-set list
-set lcs=tab:>.,trail:_,extends:\
+  call call(quickrun#outputter#buffer#new().finish,  [a:session], self)
+endfunction
 
-" Show multi-byte space
-highlight WideSpace ctermbg=blue guibg=blue
-function! s:HighlightSpaces()
-  match WideSpace /　/
-endf
-call s:HighlightSpaces()
+call quickrun#register_outputter("rspec_outputter", rspec_outputter)
+let g:quickrun_config['ruby.rspec'] = {
+      \ 'command': 'rspec',
+      \ 'cmdopt' : '-fs',
+      \ 'outputter': 'rspec_outputter',
+      \ }
 
-nnoremap gc `[v`]
+" eskk.vim
+let g:eskk#dictionary = '~/.skk-jisyo'
+let g:eskk#large_dictionary = '~/.SKK-JISYO.L'
