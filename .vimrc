@@ -31,6 +31,8 @@ Bundle 'sudo.vim'
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/java.vim'
 Bundle 'vim-scripts/javacomplete'
+Bundle 'clang'
+Bundle 'Shougo/clang_complete'
 
 Bundle 'mattn/calendar-vim'
 
@@ -66,6 +68,18 @@ function! s:HighlightSpaces()
   match WideSpace /　/
 endf
 call s:HighlightSpaces()
+
+" complete brace
+function CompleteBrace()
+  let line = strpart(getline('.'), 0, col('.') - 1)
+  if line =~ ')\=$'
+    return "{\n}\<Esc>0bo"
+  endif
+endfunction
+autocmd FileType c          :inoremap <expr> { CompleteBrace()
+autocmd FileType cpp        :inoremap <expr> { CompleteBrace()
+autocmd FileType java       :inoremap <expr> { CompleteBrace()
+autocmd FileType javascript :inoremap <expr> { CompleteBrace()
 
 " java.vim
 let java_highlight_all = 1
@@ -154,7 +168,6 @@ endfunction
 call quickrun#register_outputter("rspec_outputter", rspec_outputter)
 let g:quickrun_config['ruby.rspec'] = {
       \ 'command': 'rspec',
-      \ 'cmdopt' : '-fs',
       \ 'outputter': 'rspec_outputter',
       \ }
 
