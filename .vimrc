@@ -1,4 +1,4 @@
-" Vundle Setting
+" Vundle
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
@@ -41,10 +41,15 @@ syntax enable
 inoremap jj <esc>
 nnoremap gc `[v`]
 
-" Save fold settings.
+nnoremap gk k
+nnoremap gj j
+nnoremap k gk
+nnoremap j gj
+
+" Save fold settings
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
-autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
-" Don't save options.
+autocmd bufread * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
+" Don't save options
 set viewoptions-=options
 
 " Show line number
@@ -128,8 +133,8 @@ function! rspec_outputter.init(session)
 endfunction
 
 function! rspec_outputter.finish(session)
-  highlight default RSpecGreen ctermfg = Green cterm = none
-  highlight default RSpecRed    ctermfg = Red   cterm = none
+  highlight default RSpecGreen   ctermfg = Green cterm = none
+  highlight default RSpecRed     ctermfg = Red   cterm = none
   highlight default RSpecComment ctermfg = Cyan  cterm = none
   highlight default RSpecNormal  ctermfg = White cterm = none
   call matchadd("RSpecGreen", "^[\.F]*\.[\.F]*$")
