@@ -29,6 +29,8 @@ Bundle 'taku-o/vim-toggle'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'sudo.vim'
 Bundle 'mattn/gist-vim'
+Bundle 'vim-scripts/java.vim'
+Bundle 'vim-scripts/javacomplete'
 
 Bundle 'mattn/calendar-vim'
 
@@ -64,6 +66,13 @@ function! s:HighlightSpaces()
   match WideSpace /　/
 endf
 call s:HighlightSpaces()
+
+" java.vim
+let java_highlight_all = 1
+
+" javacomplete
+autocmd FileType java :setlocal omnifunc=javacomplete#Complete
+autocmd FileType java :setlocal completefunc=javacomplete#CompleteParamsInfo
 
 " smartchr
 inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
