@@ -19,6 +19,7 @@ Bundle 'haml.zip'
 Bundle 'submode'
 Bundle 'arpeggio'
 Bundle 'Shougo/unite.vim'
+Bundle 'h1mesuke/unite-outline'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
@@ -97,6 +98,7 @@ autocmd FileType java :setlocal completefunc=javacomplete#CompleteParamsInfo
 inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
 inoremap <expr> , smartchr#loop(', ', ',')
 cnoremap <expr> / smartchr#loop('/', '~/', '//', {'ctype': ':'})
+inoremap <expr> { smartchr#loop('{', '#{', '{{{')
 
 " toggle.vim
 let g:toggle_pairs = {'and':'or', 'or':'and', 'if':'elsif', 'elsif':'else', 'else':'if', 'enable':'disable', 'disable':'enable'}
@@ -179,3 +181,29 @@ let g:quickrun_config['ruby.rspec'] = {
 " eskk.vim
 let g:eskk#dictionary = '~/.skk-jisyo'
 let g:eskk#large_dictionary = '~/.SKK-JISYO.L'
+
+" unite.vim
+let s:unite_source = {
+      \ 'name': 'evalruby',
+      \ 'is_volatile': 1,
+      \ 'required_pattern_length': 1,
+      \ 'max_candidates': 30,
+      \ }
+
+function! s:unite_source.gather_candidates(args,  context)
+  if a:context.input[-1:] == '.'
+    let methods = split(
+          \ unite#util#system(printf('ruby -e "puts %s.methods"', a:context.input[:-2])),
+          \ "\n")
+    call map(methods,  printf("'%s' . v:val", a:context.input))
+  else
+    let methods = [a:context.input]
+  endif
+  return map(methods, '{
+        \ "word": v:val,
+        \ "source": "evalruby",
+        \ "kind": "command",
+        \ "action__command": printf("!ruby -e \"p %s\"",  v:val),
+        \ }')
+endfunction
+call unite#define_source(s:unite_source)
