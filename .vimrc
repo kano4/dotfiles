@@ -6,18 +6,18 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
-Bundle 'project.tar.gz'
-Bundle 'ZenCoding.vim'
+Bundle 'vim-scripts/project.tar.gz'
+Bundle 'mattn/zencoding-vim'
 Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
-Bundle 'endwise.vim'
-Bundle 'surround.vim'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'cucumber.zip'
-Bundle 'haml.zip'
-Bundle 'submode'
-Bundle 'arpeggio'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-haml'
+Bundle 'kana/vim-submode'
+Bundle 'kana/arpeggio'
 Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'Shougo/neocomplcache'
@@ -25,14 +25,14 @@ Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimfiler'
 Bundle 'tyru/eskk.vim'
-Bundle 'smartchr'
+Bundle 'kana/vim-smartchr'
 Bundle 'taku-o/vim-toggle'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'sudo.vim'
+Bundle 'vim-scripts/sudo.vim'
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/java.vim'
 Bundle 'vim-scripts/javacomplete'
-Bundle 'clang'
+Bundle 'vim-scripts/clang'
 Bundle 'Shougo/clang_complete'
 
 Bundle 'mattn/calendar-vim'
@@ -167,7 +167,7 @@ function! rspec_outputter.finish(session)
   call matchadd("RSpecNormal", "^Finished")
   call matchadd("RSpecNormal", "^Failed")
 
-  call call(quickrun#outputter#buffer#new().finish,  [a:session], self)
+  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
 endfunction
 
 call quickrun#register_outputter("rspec_outputter", rspec_outputter)
