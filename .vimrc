@@ -44,10 +44,8 @@ syntax enable
 inoremap jj <esc>
 nnoremap gc `[v`]
 
-nnoremap gk k
-nnoremap gj j
-nnoremap k gk
-nnoremap j gj
+let mapleader = ','
+
 
 " Save fold settings
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
@@ -207,3 +205,15 @@ function! s:unite_source.gather_candidates(args,  context)
         \ }')
 endfunction
 call unite#define_source(s:unite_source)
+
+" arpeggio.vim
+call arpeggio#load()
+Arpeggionnoremap km :<C-u>Unite buffer<CR>
+Arpeggionnoremap lm :<C-u>Unite outline<CR>
+
+nnoremap gk k
+nnoremap gj j
+nnoremap k gk
+nnoremap j gj
+nnoremap <expr> h col('.') == 1 && foldlevel(line('.')) > 0 ? 'zc' : 'h'
+nnoremap <expr> l foldclosed(line('.')) != -1 ? 'zo' : 'l'
