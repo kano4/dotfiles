@@ -20,14 +20,13 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-haml'
 Bundle 'kana/vim-submode'
-Bundle 'kana/arpeggio'
+Bundle 'kana/vim-arpeggio'
 Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimfiler'
-Bundle 'tyru/eskk.vim'
 Bundle 'kana/vim-smartchr'
 Bundle 'taku-o/vim-toggle'
 Bundle 'Lokaltog/vim-easymotion'
@@ -180,8 +179,11 @@ let g:quickrun_config['ruby.rspec'] = {
       \ }
 
 " eskk.vim
-let g:eskk#dictionary = '~/.skk-jisyo'
-let g:eskk#large_dictionary = '~/.SKK-JISYO.L'
+if v:version > 702
+  Bundle 'tyru/eskk.vim'
+  let g:eskk#dictionary = '~/.skk-jisyo'
+  let g:eskk#large_dictionary = '~/.SKK-JISYO.L'
+endif
 
 " unite.vim
 let s:unite_source = {
