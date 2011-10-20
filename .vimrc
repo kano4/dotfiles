@@ -44,6 +44,7 @@ Bundle 'mattn/calendar-vim'
 filetype off
 filetype indent on
 syntax enable
+set background="black"
 
 inoremap jj <esc>
 nnoremap gc `[v`]
