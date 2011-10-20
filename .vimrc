@@ -29,8 +29,10 @@ Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimfiler'
 Bundle 'kana/vim-smartchr'
 Bundle 'taku-o/vim-toggle'
+Bundle 'taku-o/vim-ro-when-swapfound'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'vim-scripts/sudo.vim'
+Bundle 'garbas/vim-showmarks'
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/java.vim'
 Bundle 'vim-scripts/javacomplete'
@@ -96,7 +98,7 @@ autocmd FileType java :setlocal completefunc=javacomplete#CompleteParamsInfo
 
 " smartchr
 inoremap <expr> = smartchr#loop('=', ' = ', ' == ')
-inoremap <expr> , smartchr#loop(', ', ',')
+inoremap <expr> , smartchr#loop(',', ', ')
 cnoremap <expr> / smartchr#loop('/', '~/', '//', {'ctype': ':'})
 inoremap <expr> { smartchr#loop('{', '#{', '{{{')
 
@@ -210,6 +212,9 @@ function! s:unite_source.gather_candidates(args,  context)
         \ }')
 endfunction
 call unite#define_source(s:unite_source)
+
+" showmarks
+let g:showmarks_include="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 " arpeggio.vim
 call arpeggio#load()
