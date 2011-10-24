@@ -54,6 +54,10 @@ nnoremap gc `[v`]
 
 let mapleader = ','
 
+nnoremap <Space>. :<C-u>edit $MYVIMRC<Enter>
+nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
+nnoremap <C-h> :<C-u>help<Space>
+nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
 
 " Save fold settings
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
