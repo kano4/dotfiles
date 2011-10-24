@@ -47,6 +47,7 @@ NeoBundle 'mattn/calendar-vim'
 filetype plugin on
 filetype indent on
 syntax enable
+set background="black"
 
 inoremap jj <esc>
 nnoremap gc `[v`]
