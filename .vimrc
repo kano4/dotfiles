@@ -1,47 +1,50 @@
-" Vundle
-set rtp+=~/.vim/vundle.git/
-call vundle#rc()
-
-" My Bundles
-Bundle 'gmarik/vundle'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-scripts/project.tar.gz'
-Bundle 'mattn/zencoding-vim'
-Bundle 'thinca/vim-quickrun'
-Bundle 'thinca/vim-ref'
-Bundle 'soh335/vim-ref-jquery'
-Bundle 'soh335/vim-ref-pman'
-Bundle 'ujihisa/ref-hoogle'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-haml'
-Bundle 'kana/vim-submode'
-Bundle 'kana/vim-arpeggio'
-Bundle 'Shougo/unite.vim'
-Bundle 'h1mesuke/unite-outline'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/vimshell'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/vimfiler'
-Bundle 'kana/vim-smartchr'
-Bundle 'taku-o/vim-toggle'
-Bundle 'taku-o/vim-ro-when-swapfound'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'vim-scripts/sudo.vim'
-Bundle 'garbas/vim-showmarks'
-Bundle 'mattn/gist-vim'
-Bundle 'vim-scripts/java.vim'
-Bundle 'vim-scripts/javacomplete'
-Bundle 'vim-scripts/clang'
-Bundle 'Shougo/clang_complete'
-
-Bundle 'mattn/calendar-vim'
-
+" NeoBundle
+set nocompatible
 filetype off
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/neobundle.vim.git/
+  call neobundle#rc(expand('~/.bundle'))
+endif
+
+" Plugins
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'vim-scripts/project.tar.gz'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'soh335/vim-ref-jquery'
+NeoBundle 'soh335/vim-ref-pman'
+NeoBundle 'ujihisa/ref-hoogle'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'vim-scripts/matchit.zip'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'tpope/vim-cucumber'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'kana/vim-submode'
+NeoBundle 'kana/vim-arpeggio'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'kana/vim-smartchr'
+NeoBundle 'taku-o/vim-toggle'
+NeoBundle 'taku-o/vim-ro-when-swapfound'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'vim-scripts/sudo.vim'
+NeoBundle 'garbas/vim-showmarks'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'vim-scripts/java.vim'
+NeoBundle 'vim-scripts/javacomplete'
+NeoBundle 'vim-scripts/clang'
+NeoBundle 'Shougo/clang_complete'
+NeoBundle 'mattn/calendar-vim'
+
+filetype plugin on
 filetype indent on
 syntax enable
 
@@ -182,7 +185,7 @@ let g:quickrun_config['ruby.rspec'] = {
 
 " eskk.vim
 if v:version > 702
-  Bundle 'tyru/eskk.vim'
+  NeoBundle 'tyru/eskk.vim'
   let g:eskk#dictionary = '~/.skk-jisyo'
   let g:eskk#large_dictionary = '~/.SKK-JISYO.L'
 endif
