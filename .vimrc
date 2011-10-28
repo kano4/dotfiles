@@ -95,7 +95,7 @@ autocmd FileType java :setlocal omnifunc=javacomplete#Complete
 autocmd FileType java :setlocal completefunc=javacomplete#CompleteParamsInfo
 
 " smartchr
-inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
+inoremap <expr> = smartchr#loop('=', ' = ', ' == ')
 inoremap <expr> , smartchr#loop(', ', ',')
 cnoremap <expr> / smartchr#loop('/', '~/', '//', {'ctype': ':'})
 inoremap <expr> { smartchr#loop('{', '#{', '{{{')
