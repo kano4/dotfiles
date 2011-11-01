@@ -48,6 +48,15 @@ alias ll="ls -l"
 alias la="ls -a"
 alias lf="ls -F"
 
+alias -g TELLME="&& say succeeded || say failed"
+alias -g G="| grep"
+alias -g H="| head"
+alias -g L="| less -R"
+alias -g W="| wc"
+alias -g T="| tail"
+alias -g ...="../.."
+alias -g ....="../../.."
+
 alias c='clear'
 alias f='fg'
 alias v='vim'
