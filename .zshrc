@@ -35,7 +35,12 @@ PATH=$PATH:/usr/local/src/sbt
 
 alias sudo="sudo PATH=$PATH"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+if [ -f $HOME/.rvm/scripts/rvm ]; then
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+fi
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # Alias
 alias ls="ls --color=auto"
