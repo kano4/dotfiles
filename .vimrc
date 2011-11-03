@@ -8,6 +8,7 @@ if has('vim_starting')
 endif
 
 " Plugins
+NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'vim-scripts/project.tar.gz'
@@ -86,7 +87,7 @@ endf
 call s:HighlightSpaces()
 
 " complete brace
-function CompleteBrace()
+function! CompleteBrace()
   let line = strpart(getline('.'), 0, col('.') - 1)
   if line =~ ')\=$'
     return "{\n}\<Esc>0bo"
@@ -115,7 +116,7 @@ let g:toggle_pairs = {'and':'or', 'or':'and', 'if':'elsif', 'elsif':'else', 'els
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
-function InsertTabWrapper()
+function! InsertTabWrapper()
   if pumvisible()
     return "\<c-n>"
   endif
@@ -226,8 +227,8 @@ let g:showmarks_include="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 " arpeggio.vim
 call arpeggio#load()
-Arpeggionnoremap km :<C-u>Unite buffer<CR>
-Arpeggionnoremap lm :<C-u>Unite outline<CR>
+Arpeggionnoremap im :<C-u>Unite buffer<CR>
+Arpeggionnoremap om :<C-u>Unite outline<CR>
 
 nnoremap gk k
 nnoremap gj j
