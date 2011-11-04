@@ -43,6 +43,10 @@ fi
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+source "$HOME/.rubies/src/rubies.sh"
+
+export PATH="./bin:$PATH"
+
 # Alias
 alias ls="ls --color=auto"
 alias l="ls"
@@ -87,6 +91,7 @@ alias be="bundle exec"
 alias rspec="rspec -c"
 alias cuke="cucumber"
 
+alias rails='nocorrect rails'
 alias scala='nocorrect scala'
 alias nvm='nocorrect nvm'
 alias sass='nocorrect sass'
