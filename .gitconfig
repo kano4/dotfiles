@@ -17,6 +17,7 @@
   ad = add
   pl = pull
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  hi = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
 [github]
   user = kano4

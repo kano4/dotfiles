@@ -19,7 +19,7 @@ Bundle 'soh335/vim-ref-jquery'
 Bundle 'soh335/vim-ref-pman'
 Bundle 'ujihisa/ref-hoogle'
 Bundle 'pekepeke/ref-javadoc'
-Bundle 'mojako/ref-cpan'
+Bundle 'mojako/ref-sources.vim'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/matchit.zip'
@@ -30,6 +30,7 @@ Bundle 'kana/vim-submode'
 Bundle 'kana/vim-arpeggio'
 Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
+Bundle 'sgur/unite-qf'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
@@ -47,6 +48,8 @@ Bundle 'vim-scripts/clang'
 Bundle 'Shougo/clang_complete'
 Bundle 'mattn/calendar-vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'vim-scripts/errormarker.vim'
+Bundle 'dannyob/quickfixstatus'
 
 filetype plugin on
 filetype indent on
@@ -251,3 +254,17 @@ nnoremap <Space>gb :<C-u>Gblame<Enter>
 
 " vim-ref
 let g:ref_refe_cmd = "/usr/local/bin/rubyrefm/refe-1_9_2"
+
+" errormarker.vim
+let g:errormarker_errortext = '!!'
+let g:errormarker_warningtext = '??'
+highlight SpellBad ctermbg=Red ctermfg=White
+let g:errormarker_errorgroup = 'ErrorMsg'
+let g:errormarker_warninggroup = 'Todo'
+if !exists('g:flymake_enabled')
+  let g:flymake_enabled = 1
+  au BufWritePost *rb,*.pl silent make -c %
+  au BufWritePost *rb,*.pl silent redraw!
+endif
+autocmd FileType perl :compiler perl
+autocmd FileType ruby :compiler ruby
