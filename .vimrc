@@ -246,3 +246,6 @@ nnoremap <Space>ga :<C-u>Gwrite<Enter>
 nnoremap <Space>gc :<C-u>Gcommit<Enter>
 nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
 nnoremap <Space>gb :<C-u>Gblame<Enter>
+
+" vim-ref
+let g:ref_refe_cmd = "/usr/local/bin/rubyrefm/refe-1_9_2"
