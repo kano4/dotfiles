@@ -65,6 +65,7 @@ nnoremap <Space>. :<C-u>edit $MYVIMRC<Enter>
 nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
 nnoremap <C-h> :<C-u>help<Space>
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
+nnoremap <Space>b :bp<CR>
 
 " Save fold settings
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
@@ -233,8 +234,9 @@ let g:showmarks_include="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 " arpeggio.vim
 call arpeggio#load()
-Arpeggionnoremap im :<C-u>Unite buffer<CR>
-Arpeggionnoremap om :<C-u>Unite outline<CR>
+Arpeggionnoremap fj :<C-u>Unite buffer<CR>
+Arpeggionnoremap fk :<C-u>Unite outline<CR>
+Arpeggionnoremap fl :<C-u>Unite qf<CR>
 
 nnoremap gk k
 nnoremap gj j
@@ -251,6 +253,7 @@ nnoremap <Space>ga :<C-u>Gwrite<Enter>
 nnoremap <Space>gc :<C-u>Gcommit<Enter>
 nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
 nnoremap <Space>gb :<C-u>Gblame<Enter>
+highlight DiffAdd ctermfg=White
 
 " vim-ref
 let g:ref_refe_cmd = "/usr/local/bin/rubyrefm/refe-1_9_2"
@@ -263,8 +266,8 @@ let g:errormarker_errorgroup = 'ErrorMsg'
 let g:errormarker_warninggroup = 'Todo'
 if !exists('g:flymake_enabled')
   let g:flymake_enabled = 1
-  au BufWritePost *rb,*.pl silent make -c %
-  au BufWritePost *rb,*.pl silent redraw!
+  au BufWritePost *.rb,*.pl silent make -c %
+  au BufWritePost *.rb,*.pl silent redraw!
 endif
 autocmd FileType perl :compiler perl
 autocmd FileType ruby :compiler ruby
