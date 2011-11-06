@@ -158,6 +158,7 @@ imap <C-e> <C-y>,
 
 " quickrun
 let g:quickrun_config = {}
+let g:quickrun_config={'*': {'split': ''}}
 let g:quickrun_config.tcl = {'command': 'ns'}
 let g:quickrun_config.matlab = {'command': 'octave', 'exec': '%c -q %s'}
 augroup QrunRSpec
@@ -165,6 +166,7 @@ augroup QrunRSpec
   autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
 augroup END
 
+" quickrun for RSpec
 let rspec_outputter = quickrun#outputter#buffer#new()
 function! rspec_outputter.init(session)
   call call(quickrun#outputter#buffer#new().init,  [a:session],  self)
@@ -198,6 +200,31 @@ call quickrun#register_outputter("rspec_outputter", rspec_outputter)
 let g:quickrun_config['ruby.rspec'] = {
       \ 'command': 'rspec',
       \ 'outputter': 'rspec_outputter',
+      \ }
+
+" quickrun for Cucumber
+let cucumber_outputter = quickrun#outputter#buffer#new()
+function! cucumber_outputter.init(session)
+  call call(quickrun#outputter#buffer#new().init,  [a:session],  self)
+endfunction
+
+function! cucumber_outputter.finish(session)
+  highlight default CucumberRed        ctermfg = Red     cterm = none
+  highlight default CucumberYellow     ctermfg = Yellow  cterm = none
+  highlight default CucumberCyan       ctermfg = Cyan    cterm = none
+  highlight default CucumberGreen      ctermfg = Green   cterm = none
+  call matchadd("CucumberRed",    "[1-9][0-9]* failed")
+  call matchadd("CucumberYellow", "[1-9][0-9]* undefined")
+  call matchadd("CucumberCyan",   "[1-9][0-9]* skipped")
+  call matchadd("CucumberGreen",  "[1-9][0-9]* passed")
+
+  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
+endfunction
+
+call quickrun#register_outputter("cucumber_outputter", cucumber_outputter)
+let g:quickrun_config['cucumber'] = {
+      \ 'command': 'cucumber',
+      \ 'outputter': 'cucumber_outputter',
       \ }
 
 " eskk.vim
