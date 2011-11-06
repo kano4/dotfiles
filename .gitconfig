@@ -5,7 +5,9 @@
   ui = auto
 [core]
   editor = vim
+  excludesfile = ~/.gitignore
 [alias]
+  in = init
   st = status
   ci = commit
   co = checkout
