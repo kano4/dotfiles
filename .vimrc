@@ -50,6 +50,7 @@ Bundle 'mattn/calendar-vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/errormarker.vim'
 Bundle 'dannyob/quickfixstatus'
+Bundle 'vim-scripts/buftabs'
 
 filetype plugin on
 filetype indent on
@@ -65,11 +66,20 @@ nnoremap <Space>. :<C-u>edit $MYVIMRC<Enter>
 nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
 nnoremap <C-h> :<C-u>help<Space>
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
-nnoremap <Space>bb :bp<CR>
-nnoremap <Space>bn :bn<CR>
+nnoremap <Space>b :bp<CR>
+nnoremap <Space>n :bn<CR>
 nnoremap <Space>bf :bf<CR>
 nnoremap <Space>bl :bl<CR>
 nnoremap <Space>bw :bw<CR>
+
+highlight StatusLine   ctermfg=White    ctermbg=DarkGray cterm=bold
+highlight StatusLineNC ctermfg=DarkBlue ctermbg=DarkGray cterm=none
+
+let g:buftabs_only_basename=1
+let g:buftabs_in_statusline=1
+let g:buftabs_active_highlight_group="Visual"
+set statusline=%=\ %F\ [%{fugitive#statusline()}][%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
+set laststatus=2
 
 " Save fold settings
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
@@ -161,12 +171,13 @@ let g:quickrun_config = {}
 let g:quickrun_config={'*': {'split': ''}}
 let g:quickrun_config.tcl = {'command': 'ns'}
 let g:quickrun_config.matlab = {'command': 'octave', 'exec': '%c -q %s'}
+
+" quickrun for RSpec
 augroup QrunRSpec
   autocmd!
   autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
 augroup END
 
-" quickrun for RSpec
 let rspec_outputter = quickrun#outputter#buffer#new()
 function! rspec_outputter.init(session)
   call call(quickrun#outputter#buffer#new().init,  [a:session],  self)
@@ -200,6 +211,43 @@ call quickrun#register_outputter("rspec_outputter", rspec_outputter)
 let g:quickrun_config['ruby.rspec'] = {
       \ 'command': 'rspec',
       \ 'outputter': 'rspec_outputter',
+      \ }
+
+" quickrun for Test::Unit
+augroup QrunTestUnit
+  autocmd!
+  autocmd BufWinEnter,BufNewFile test_*.rb set filetype=ruby.testunit
+augroup END
+
+let testunit_outputter = quickrun#outputter#buffer#new()
+function! testunit_outputter.init(session)
+  call call(quickrun#outputter#buffer#new().init,  [a:session],  self)
+endfunction
+
+function! testunit_outputter.finish(session)
+  highlight default TestUnitGreen   ctermfg = Green  cterm = none
+  highlight default TestUnitYellow  ctermfg = Yellow cterm = none
+  highlight default TestUnitRed     ctermfg = Red    cterm = none
+  highlight default TestUnitNormal  ctermfg = White  cterm = none
+  call matchadd("TestUnitGreen", "^[\.F]*\.[\.F]*$")
+  call matchadd("TestUnitGreen", "^.*0 failures,.*$")
+  call matchadd("TestUnitYellow", " Error:")
+  call matchadd("TestUnitYellow", "E")
+  call matchadd("TestUnitYellow", "^.*[1-9][0-9]* errors,.*$")
+  call matchadd("TestUnitRed", "F")
+  call matchadd("TestUnitRed", " Failure:")
+  call matchadd("TestUnitRed", "^.*[1-9][0-9]* failures,.*$")
+  call matchadd("TestUnitNormal", "NoMethodError")
+  call matchadd("TestUnitNormal", "ArgumentError")
+  call matchadd("TestUnitNormal", "^Finished")
+
+  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
+endfunction
+
+call quickrun#register_outputter("testunit_outputter", testunit_outputter)
+let g:quickrun_config['ruby.testunit'] = {
+      \ 'command': 'ruby',
+      \ 'outputter': 'testunit_outputter',
       \ }
 
 " quickrun for Cucumber
@@ -298,8 +346,7 @@ let g:errormarker_errorgroup = 'ErrorMsg'
 let g:errormarker_warninggroup = 'Todo'
 if !exists('g:flymake_enabled')
   let g:flymake_enabled = 1
-  au BufWritePost *.rb,*.pl silent make -c %
-  au BufWritePost *.rb,*.pl silent redraw!
+  au BufWritePost *.pl silent make -c %
+  au BufWritePost *.pl silent redraw!
 endif
 autocmd FileType perl :compiler perl
-autocmd FileType ruby :compiler ruby
