@@ -40,7 +40,6 @@ Bundle 'taku-o/vim-toggle'
 Bundle 'taku-o/vim-ro-when-swapfound'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'vim-scripts/sudo.vim'
-Bundle 'garbas/vim-showmarks'
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/java.vim'
 Bundle 'vim-scripts/javacomplete'
@@ -348,7 +347,3 @@ if !exists('g:flymake_enabled')
   au BufWritePost *.pl silent redraw!
 endif
 autocmd FileType perl :compiler perl
-
-" showmarks
-let g:showmarks_include="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-highligh SignColumn ctermbg=none
