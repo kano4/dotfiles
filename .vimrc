@@ -55,7 +55,6 @@ Bundle 'vim-scripts/buftabs'
 filetype plugin on
 filetype indent on
 syntax enable
-set background="black"
 
 inoremap jj <esc>
 nnoremap gc `[v`]
@@ -72,13 +71,14 @@ nnoremap <Space>bf :bf<CR>
 nnoremap <Space>bl :bl<CR>
 nnoremap <Space>bw :bw<CR>
 
+" StatusLine
 highlight StatusLine   ctermfg=White    ctermbg=DarkGray cterm=bold
 highlight StatusLineNC ctermfg=DarkBlue ctermbg=DarkGray cterm=none
 
 let g:buftabs_only_basename=1
 let g:buftabs_in_statusline=1
 let g:buftabs_active_highlight_group="Visual"
-set statusline=%=\ %F\ [%{fugitive#statusline()}][%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
+"set statusline=%=\ %f\ [%{fugitive#statusline()}][%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
 set laststatus=2
 
 " Save fold settings
@@ -131,6 +131,7 @@ inoremap <expr> = smartchr#loop('=', ' = ', ' == ')
 inoremap <expr> , smartchr#loop(',', ', ')
 cnoremap <expr> / smartchr#loop('/', '~/', '//', {'ctype': ':'})
 inoremap <expr> { smartchr#loop('{', '#{', '{{{')
+inoremap <expr> # smartchr#loop('#', '##', '# => ')
 
 " toggle.vim
 let g:toggle_pairs = {'and':'or', 'or':'and', 'if':'elsif', 'elsif':'else', 'else':'if', 'enable':'disable', 'disable':'enable'}
@@ -308,9 +309,6 @@ function! s:unite_source.gather_candidates(args,  context)
 endfunction
 call unite#define_source(s:unite_source)
 
-" showmarks
-let g:showmarks_include="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
 " arpeggio.vim
 call arpeggio#load()
 Arpeggionnoremap fj :<C-u>Unite buffer<CR>
@@ -350,3 +348,7 @@ if !exists('g:flymake_enabled')
   au BufWritePost *.pl silent redraw!
 endif
 autocmd FileType perl :compiler perl
+
+" showmarks
+let g:showmarks_include="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+highligh SignColumn ctermbg=none
