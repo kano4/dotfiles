@@ -2,10 +2,8 @@
 set nocompatible
 filetype off
 
-if has('vim_starting')
-  set rtp+=~/.vim/bundle/vundle
-  call vundle#rc()
-endif
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
 
 " Plugins
 Bundle 'gmarik/vundle'
