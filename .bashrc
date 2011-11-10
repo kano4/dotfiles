@@ -6,8 +6,10 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific aliases and functions
-source ~/.git-completion.sh
-PS1="\w\$(__git_ps1 [%s]) \$ "
+if [ -f ~/.git-completion.sh ]; then
+  source ~/.git-completion.sh
+  PS1="\w\$(__git_ps1 [%s]) \$ "
+fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
