@@ -40,10 +40,14 @@ if [ -f $HOME/.rvm/scripts/rvm ]; then
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 fi
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if [ -f $HOME/.rbenv/bin ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
-source "$HOME/.rubies/src/rubies.sh"
+if [ -f $HOME/.rubies/src/rubies.sh ]; then
+  source "$HOME/.rubies/src/rubies.sh"
+fi
 
 export PATH="./bin:$PATH"
 
