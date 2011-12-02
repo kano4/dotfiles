@@ -69,6 +69,8 @@ nnoremap <Space>bf :bf<CR>
 nnoremap <Space>bl :bl<CR>
 nnoremap <Space>bw :bw<CR>
 
+nnoremap <Space>S :<C-u>sp<Enter>:<C-u>VimShell<Enter>
+
 " StatusLine
 highlight StatusLine   ctermfg=White    ctermbg=DarkGray cterm=bold
 highlight StatusLineNC ctermfg=DarkBlue ctermbg=DarkGray cterm=none

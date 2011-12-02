@@ -28,4 +28,4 @@
   d4 = diff HEAD^^^
   d5 = diff HEAD^^^
 [github]
-  user = kano4
+  user = Shinji Kano
