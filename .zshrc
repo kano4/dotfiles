@@ -37,17 +37,8 @@ PATH=$PATH:/usr/local/src/sbt
 
 alias sudo="sudo PATH=$PATH"
 
-if [ -f $HOME/.rvm/scripts/rvm ]; then
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-fi
-
-if [ -f $HOME/.rbenv/bin ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
-if [ -f $HOME/.rubies/src/rubies.sh ]; then
-  source "$HOME/.rubies/src/rubies.sh"
+if [ -f $HOME/.rsm/rsm.sh ]; then
+  source "$HOME/.rsm/rsm.sh"
 fi
 
 export PATH="./bin:$PATH"
