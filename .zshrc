@@ -37,6 +37,10 @@ PATH=$PATH:/usr/local/src/sbt
 
 alias sudo="sudo PATH=$PATH"
 
+if [ -f $HOME/.rvm/scripts/rvm ]; then
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+fi
+
 if [ -f $HOME/.rsm/rsm.sh ]; then
   source "$HOME/.rsm/rsm.sh"
 fi
