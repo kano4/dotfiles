@@ -45,6 +45,7 @@ if [ -f $HOME/.rsm/rsm.sh ]; then
   source "$HOME/.rsm/rsm.sh"
 fi
 
+export PATH="$HOME/.my-scripts:$PATH"
 export PATH="./bin:$PATH"
 
 # Alias

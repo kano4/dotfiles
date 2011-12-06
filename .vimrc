@@ -71,6 +71,8 @@ nnoremap <Space>bw :bw<CR>
 
 nnoremap <Space>S :<C-u>sp<Enter>:<C-u>VimShell<Enter>
 
+autocmd FileType html setlocal includeexpr=substitute(v:fname,'^\\/','','') | setlocal path+=;/
+
 " StatusLine
 highlight StatusLine   ctermfg=White    ctermbg=DarkGray cterm=bold
 highlight StatusLineNC ctermfg=DarkBlue ctermbg=DarkGray cterm=none
@@ -128,7 +130,6 @@ autocmd FileType java :setlocal completefunc=javacomplete#CompleteParamsInfo
 
 " smartchr
 inoremap <expr> = smartchr#loop('=', ' = ', ' == ')
-inoremap <expr> , smartchr#loop(',', ', ')
 cnoremap <expr> / smartchr#loop('/', '~/', '//', {'ctype': ':'})
 inoremap <expr> { smartchr#loop('{', '#{', '{{{')
 inoremap <expr> # smartchr#loop('#', '##', '# => ')
