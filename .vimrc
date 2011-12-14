@@ -97,6 +97,7 @@ highlight LineNr ctermfg=grey guifg=#050505
 set expandtab
 set smartindent
 set ts=2 sw=2 sts=2
+autocmd FileType java :set noexpandtab
 
 " Show Tab and end-of-line space
 set list
@@ -120,6 +121,7 @@ autocmd FileType c          :inoremap <expr> { CompleteBrace()
 autocmd FileType cpp        :inoremap <expr> { CompleteBrace()
 autocmd FileType java       :inoremap <expr> { CompleteBrace()
 autocmd FileType javascript :inoremap <expr> { CompleteBrace()
+
 
 " java.vim
 let java_highlight_all = 1
