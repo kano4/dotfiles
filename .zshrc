@@ -71,22 +71,12 @@ alias e='emacsclient'
 alias g='git'
 alias s='screen'
 
+alias less="/usr/share/vim/vim73/macros/less.sh"
+
 alias nkf-chk='nkf -g'
 alias nkf-utf8='nkf -w --overwrite'
 alias nkf-sjis='nkf -s --overwrite'
 alias nkf-eucjp='nkf -e --overwrite'
-
-alias r186="rvm use 1.8.6"
-alias r187="rvm use 1.8.7"
-alias r191="rvm use 1.9.1"
-alias r192="rvm use 1.9.2"
-alias rj="rvm use jruby"
-alias ree="rvm use ree"
-alias rbmark="rvm use 1.8.7,1.9.2 benchmark"
-
-alias r2="rvm use 1.8.7@rails2"
-alias r30="rvm use 1.9.2@rails3.0"
-alias r31="rvm use 1.9.2@rails3-pre"
 
 alias be="bundle exec"
 alias rspec="rspec -c"
