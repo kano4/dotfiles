@@ -35,6 +35,8 @@ PATH=$PATH:/usr/local/src/ns-allinone-2.34/otcl-1.13
 PATH=$PATH:/usr/local/src/ns-allinone-3.34/ns-2.34/bin
 PATH=$PATH:/usr/local/src/sbt
 
+PATH=$PATH:/usr/local/src/android-sdk-linux/tools
+
 alias sudo="sudo PATH=$PATH"
 
 if [ -f $HOME/.rvm/scripts/rvm ]; then
