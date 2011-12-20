@@ -65,6 +65,9 @@ alias -g W="| wc"
 alias -g T="| tail"
 alias -g ...="../.."
 alias -g ....="../../.."
+alias -g .....="../../../.."
+alias -g ......="../../../../.."
+alias -g .......="../../../../../.."
 
 alias c='clear'
 alias f='fg'
