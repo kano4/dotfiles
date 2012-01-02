@@ -48,7 +48,6 @@ if [ -f $HOME/.rsm/rsm.sh ]; then
 fi
 
 export PATH="$HOME/.my-scripts:$PATH"
-export PATH="./bin:$PATH"
 
 # Alias
 alias ls="ls --color=auto"
