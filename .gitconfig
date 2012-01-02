@@ -25,11 +25,14 @@
   np = log --since=yesterday --pretty=format:\"%h %ad | %s%d [%an]\" --date=short
   gp = log --since=\"1 month\" --pretty=format:\"%h %ad | %s%d [%an]\" --date=short
 
-
   d1 = diff HEAD
   d2 = diff HEAD^
   d3 = diff HEAD^^
   d4 = diff HEAD^^^
   d5 = diff HEAD^^^
+  d12 = diff HEAD^    HEAD
+  d23 = diff HEAD^^   HEAD^
+  d34 = diff HEAD^^^  HEAD^^
+  d45 = diff HEAD^^^^ HEAD^^^
 [github]
   user = Shinji Kano
