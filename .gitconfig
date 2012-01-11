@@ -15,6 +15,7 @@
   br = branch
   unstage = reset HEAD --
   last = log -1 HEAD
+  re = remote
   lo = log
   ad = add
   pl = pull
