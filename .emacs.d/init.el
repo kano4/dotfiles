@@ -6,3 +6,6 @@
 
 ;; remove trailing whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; remove tool bar
+(tool-bar-mode 0)
