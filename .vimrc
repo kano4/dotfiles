@@ -9,7 +9,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
-Bundle 'vim-scripts/project.tar.gz'
 Bundle 'mattn/zencoding-vim'
 Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
@@ -32,7 +31,6 @@ Bundle 'sgur/unite-qf'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
-Bundle 'Shougo/vimfiler'
 Bundle 'kana/vim-smartchr'
 Bundle 'taku-o/vim-toggle'
 Bundle 'taku-o/vim-ro-when-swapfound'
@@ -43,8 +41,6 @@ Bundle 'kano4/sonictemplate-vim'
 Bundle 'vim-scripts/java.vim'
 Bundle 'vim-scripts/javacomplete'
 Bundle 'vim-scripts/clang'
-Bundle 'Shougo/clang_complete'
-Bundle 'mattn/calendar-vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/errormarker.vim'
 Bundle 'dannyob/quickfixstatus'
@@ -109,19 +105,6 @@ function! s:HighlightSpaces()
   match WideSpace /　/
 endf
 call s:HighlightSpaces()
-
-" complete brace
-function! CompleteBrace()
-  let line = strpart(getline('.'), 0, col('.') - 1)
-  if line =~ ')\=$'
-    return "{\n}\<Esc>0bo"
-  endif
-endfunction
-autocmd FileType c          :inoremap <expr> { CompleteBrace()
-autocmd FileType cpp        :inoremap <expr> { CompleteBrace()
-autocmd FileType java       :inoremap <expr> { CompleteBrace()
-autocmd FileType javascript :inoremap <expr> { CompleteBrace()
-
 
 " java.vim
 let java_highlight_all = 1
