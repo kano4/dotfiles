@@ -334,3 +334,8 @@ if !exists('g:flymake_enabled')
   au BufWritePost *.pl silent redraw!
 endif
 autocmd FileType perl :compiler perl
+
+function! MagicComment()
+  return "# -*- coding: utf-8 -*-\<CR>"
+endfunction
+inoreabbrev <buffer> ## <C-R>=MagicComment()<CR>
