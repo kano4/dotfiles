@@ -29,12 +29,7 @@ setopt correct
 setopt nolistbeep
 setopt cshnullglob
 
-PATH=$PATH:/usr/local/src/ns-allinone-2.34/ns-2.34
-PATH=$PATH:/usr/local/src/ns-allinone-2.34/nam-1.14
-PATH=$PATH:/usr/local/src/ns-allinone-2.34/otcl-1.13
-PATH=$PATH:/usr/local/src/ns-allinone-3.34/ns-2.34/bin
 PATH=$PATH:/usr/local/src/sbt
-
 PATH=$PATH:/usr/local/src/android-sdk-linux/tools
 
 alias sudo="sudo PATH=$PATH"
@@ -47,6 +42,8 @@ if [ -f $HOME/.rsm/rsm.sh ]; then
   source "$HOME/.rsm/rsm.sh"
 fi
 
+export PATH="$PATH:$HOME/.gems/bin"
+
 export PATH="$HOME/.my-scripts:$PATH"
 
 # Alias
@@ -54,6 +51,7 @@ alias ls="ls --color=auto"
 alias l="ls"
 alias ll="ls -l"
 alias la="ls -a"
+alias lla="ls -la"
 alias lf="ls -F"
 
 alias -g TELLME="&& say succeeded || say failed"
@@ -81,6 +79,7 @@ alias nkf-chk='nkf -g'
 alias nkf-utf8='nkf -w --overwrite'
 alias nkf-sjis='nkf -s --overwrite'
 alias nkf-eucjp='nkf -e --overwrite'
+alias nkf-ascii='nkf -Z --overwrite'
 
 alias be="bundle exec"
 alias rspec="rspec -c"

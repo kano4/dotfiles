@@ -37,7 +37,6 @@ Bundle 'taku-o/vim-ro-when-swapfound'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'vim-scripts/sudo.vim'
 Bundle 'mattn/gist-vim'
-Bundle 'kano4/sonictemplate-vim'
 Bundle 'vim-scripts/java.vim'
 Bundle 'vim-scripts/javacomplete'
 Bundle 'vim-scripts/clang'
@@ -106,6 +105,9 @@ function! s:HighlightSpaces()
 endf
 call s:HighlightSpaces()
 
+" vim-easymotion
+let g:EasyMotion_leader_key = '<Leader>'
+
 " java.vim
 let java_highlight_all = 1
 
@@ -114,7 +116,6 @@ autocmd FileType java :setlocal omnifunc=javacomplete#Complete
 autocmd FileType java :setlocal completefunc=javacomplete#CompleteParamsInfo
 
 " smartchr
-inoremap <expr> = smartchr#loop('=', ' = ', ' == ')
 cnoremap <expr> / smartchr#loop('/', '~/', '//', {'ctype': ':'})
 inoremap <expr> { smartchr#loop('{', '#{', '{{{')
 inoremap <expr> # smartchr#loop('#', '##', '# => ')
@@ -139,6 +140,11 @@ function! InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
+" neocomplcache snippets
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
+let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
+
 " submode.vim
 call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
 call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
@@ -150,7 +156,7 @@ call submode#map('winsize', 'n', '', '+', '<C-w>+')
 call submode#map('winsize', 'n', '', '-', '<C-w>-')
 
 " ZenCoding
-let g:user_zen_settings = {'lang': 'ja', 'indentation': ' '}
+let g:user_zen_settings = {'lang': 'ja', 'indentation': '  '}
 imap <C-e> <C-y>,
 
 " quickrun
