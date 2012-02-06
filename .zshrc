@@ -32,6 +32,11 @@ setopt cshnullglob
 PATH=$PATH:/usr/local/src/sbt
 PATH=$PATH:/usr/local/src/android-sdk-linux/tools
 
+gems=`ls .gems/gems/`
+for gem in ${gems[@]}; do
+  export RUBYLIB="$HOME/.gems/gems/$gem/lib"
+done
+
 alias sudo="sudo PATH=$PATH"
 
 if [ -f $HOME/.rvm/scripts/rvm ]; then

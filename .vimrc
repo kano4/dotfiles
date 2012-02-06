@@ -66,6 +66,7 @@ nnoremap <Space>bw :bw<CR>
 
 nnoremap <Space>S :<C-u>sp<Enter>:<C-u>VimShell<Enter>
 
+autocmd FileType * setlocal formatoptions-=ro
 autocmd FileType html setlocal includeexpr=substitute(v:fname,'^\\/','','') | setlocal path+=;/
 
 " StatusLine
