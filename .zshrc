@@ -75,7 +75,8 @@ alias g='git'
 
 alias gst='git status'
 alias gdi='git diff'
-
+alias gad='git add'
+alias gci='git commit'
 
 alias nkf-chk='nkf -g'
 alias nkf-utf8='nkf -w --overwrite'

@@ -1,2 +1,5 @@
 .classpath
 *.swp
+
+.vim/bundle
+.vim/view

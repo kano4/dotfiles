@@ -107,7 +107,6 @@ call s:HighlightSpaces()
 
 " vimshell
 let g:vimshell_prompt = '% '
-let g:vimshell_user_prompt = 'getcwd()'
 
 " vim-easymotion
 let g:EasyMotion_leader_key = '<Leader>'
@@ -166,8 +165,6 @@ imap <C-e> <C-y>,
 " quickrun
 let g:quickrun_config = {}
 let g:quickrun_config={'*': {'split': ''}}
-let g:quickrun_config.tcl = {'command': 'ns'}
-let g:quickrun_config.matlab = {'command': 'octave', 'exec': '%c -q %s'}
 
 " quickrun for RSpec
 augroup QrunRSpec
@@ -344,8 +341,3 @@ if !exists('g:flymake_enabled')
   au BufWritePost *.pl silent redraw!
 endif
 autocmd FileType perl :compiler perl
-
-function! MagicComment()
-  return "# -*- coding: utf-8 -*-\<CR>"
-endfunction
-inoreabbrev <buffer> ## <C-R>=MagicComment()<CR>
