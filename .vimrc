@@ -105,6 +105,10 @@ function! s:HighlightSpaces()
 endf
 call s:HighlightSpaces()
 
+" vimshell
+let g:vimshell_prompt = '% '
+let g:vimshell_user_prompt = 'getcwd()'
+
 " vim-easymotion
 let g:EasyMotion_leader_key = '<Leader>'
 

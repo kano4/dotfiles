@@ -70,10 +70,12 @@ alias c='clear'
 alias f='fg'
 alias v='vim'
 alias e='emacsclient'
-alias g='git'
 alias s='screen'
+alias g='git'
 
-alias less="/usr/share/vim/vim73/macros/less.sh"
+alias gst='git status'
+alias gdi='git diff'
+
 
 alias nkf-chk='nkf -g'
 alias nkf-utf8='nkf -w --overwrite'
