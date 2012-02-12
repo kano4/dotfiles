@@ -32,7 +32,7 @@ setopt cshnullglob
 PATH=$PATH:/usr/local/src/sbt
 PATH=$PATH:/usr/local/src/android-sdk-linux/tools
 
-if [ -f $HOME/.gems/gems ]; then
+if [ -e $HOME/.gems/gems/ ]; then
   gems=(`ls $HOME/.gems/gems/ | tr -s '\n' ' '`)
   for gem in ${gems[@]}; do
     export RUBYLIB=$RUBYLIB:"$HOME/.gems/gems/$gem/lib"
