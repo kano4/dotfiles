@@ -2,3 +2,16 @@ snippet     magic
 abbr        # -*- coding: utf-8 -*-
     # -*- coding: utf-8 -*-
     ${0}
+
+snippet     class
+abbr        class end
+    class ${1:class_name}
+      ${2}
+    end
+
+snippet     begin
+abbr        begin end
+    begin
+      ${1}
+    rescue
+    end
