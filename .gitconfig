@@ -36,4 +36,4 @@
   d34 = diff HEAD^^^  HEAD^^
   d45 = diff HEAD^^^^ HEAD^^^
 [github]
-  user = Shinji Kano
+  user = kano4
